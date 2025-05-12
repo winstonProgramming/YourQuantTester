@@ -1,0 +1,2116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CsvFileAttributes">
+    <option name="attributeMap">
+      <map>
+        <entry key="D:\Winston's Data\Downloads\csv3\1d\raw\AUDCAD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv3\1d\raw\EURCNH_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv3\1d\raw\EURILS_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv3\1d\raw\ILSUSD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv3\1d\raw\USDNZD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv3\1d\supports and resistances\MXNCHF_supports and resistances.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\AUDJPY_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\AUDNZD_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\CADCHF_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\CADCNY_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\CADHKD_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\CHFAUD_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\EURUSD_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\HKDSGD_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\MXNCHF_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\buy signals\USDNZD_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\CADAUD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\CADCHF_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\CADNZD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\CADUSD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\CHFAUD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\CHFNZD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\EURUSD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\GBPCAD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\HKDSGD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\NZDAUD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\NZDCAD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\NZDEUR_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\USDEUR_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\divergences\USDNZD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\ema\AUDJPY_ema.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\ema\CHFNZD_ema.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\ema\NZDAUD_ema.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\ema\SGDCNH_ema.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\CADCHF_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\CADHKD_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\CHFAUD_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\CHFSGD_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\EURJPY_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\EURUSD_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\GBPCZK_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\HKDSGD_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\ILSUSD_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\order list\SGDPLN_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\AUDCAD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\AUDGBP_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\AUDHUF_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\AUDILS_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\CADGBP_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\CADJPY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\CNYAUD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\CNYCAD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\CNYEUR_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\CZKEUR_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\EURCNH_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\EURCNY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\EURJPY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\EURTRY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\EURUSD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\GBPCAD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\GBPCHF_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\GBPJPY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\GBPMXN_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\GBPNZD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\GBPUSD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\HKDZAR_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\HUFUSD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\JPYCAD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\JPYEUR_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\JPYILS_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\JPYTRY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\MXNCHF_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\MXNNOK_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\NOKSEK_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\NZDUSD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\SGDCNY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\SGDNZD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\SGDZAR_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\TRYCZK_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\USDAUD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\USDCHF_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\USDNZD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\USDSEK_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\ZARCZK_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\ZARNZD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\ZARTRY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\raw\ZARUSD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\rsi\AUDCHF_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\rsi\CADCHF_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\rsi\SGDAUD_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\rsi\SGDCHF_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\rsi\USDNZD_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\sell signals\CADHKD_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\sell signals\CHFAUD_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\sell signals\EURUSD_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\sell signals\MXNCHF_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\sell signals\NZDCAD_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\sell signals\USDNZD_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\stochastic\CADAUD_stochastic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\stochastic\CHFSGD_stochastic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\stochastic\EURUSD_stochastic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\stochastic\SGDCNH_stochastic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\supports and resistances\MXNCHF_supports and resistances.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\utilized data\EURUSD_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1d\utilized data\USDAUD_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\AAPL_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\ABBV_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\ABT_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\ACN_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\ADBE_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\AMAT_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\AMD_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\AMGN_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\AMZN_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\BKNG_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\BRK-B_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\BUD_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\BX_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\JPM_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\NOW_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\NVO_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\PDD_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\PM_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\SAP_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\SPGI_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\UNP_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\breakouts\V_breakouts.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\AAPL_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\ABBV_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\A_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\BKNG_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\BRK-B_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\CADCNY_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\CADCZK_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\NOW_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\NVDA_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\NVO_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\PG_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\PM_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\SGDCHF_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\SGDCNH_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\SGDCNY_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\SGDEUR_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\SGDSEK_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\UNP_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\USB_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\WTW_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\buy signals\XOM_buy signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\AAPL_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\ABT_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\ACN_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\ARM_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\BKNG_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\BRK-B_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\BX_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\NOW_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\NVDA_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\NVO_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\UNP_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\candle stick\WMT_candle stick.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\AAPL_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\ABT_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\BKNG_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\BRK-B_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\BX_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\COP_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\EURUSD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\HDB_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\IBM_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\LIN_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\NOW_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\NVO_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\SGDCNH_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\SGDCNY_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\SGDDKK_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\SGDHKD_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\SGDHUF_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\SGDMXN_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\UNP_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\WEC_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\WMT_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\WYNN_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\YUM_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\ZBH_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\divergences\ZBRA_divergences.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\ema\ABT_ema.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\ema\PLNDKK_ema.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\ema\SGDCNH_ema.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\ema\SGDDKK_ema.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\1\lows price 1\EURUSD_lows price 1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\1\lows price 1\USDCAD_lows price 1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\1\lows rsi 1\SGDPLN_lows rsi 1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\1\lows rsi 1\USDCAD_lows rsi 1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\2\highs price 2\SGDHUF_highs price 2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\2\lows price 2\AAPL_lows price 2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\4\highs price 4\V_highs price 4.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\4\lows price 4\AAPL_lows price 4.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\highs and lows\4\lows price 4\V_lows price 4.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\markov\ABT_markov.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\markov\JPM_markov.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\AAPL_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\AES_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\BHP_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\BKNG_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\BRK-B_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\COR_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\CVX_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\HEI_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\NVO_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\PG_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\PLNCNY_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\PM_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\SGDCNH_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\TAP_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\UNH_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\USDHKD_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\V_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\order list\WAT_order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\AAPL_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\BAC_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\CADILS_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\CEG_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\COIN_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\EL_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\EURUSD_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\NOKZAR_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\PLTR_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\SGDCNY_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\SGDPLN_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\V_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\XEL_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\raw\ZBH_raw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\rsi\AAL_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\rsi\AAPL_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\rsi\CPRT_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\rsi\EL_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\rsi\PM_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\rsi\SGDCNH_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\sell signals\AAPL_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\sell signals\BRK-B_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\sell signals\EURUSD_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\sell signals\NVO_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\sell signals\PG_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\sell signals\PM_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\sell signals\USDHKD_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\sell signals\XOM_sell signals.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\stochastic crossover divergence\ABT_stochastic crossover divergence.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\stochastic crossover divergence\BRK-B_stochastic crossover divergence.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\stochastic crossover divergence\SYK_stochastic crossover divergence.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\stochastic crossover divergence\XOM_stochastic crossover divergence.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\stochastic\ABT_stochastic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\stochastic\SGDDKK_stochastic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\stochastic\SGDMXN_stochastic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\supports and resistances\SGDPLN_supports and resistances.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\supports and resistances\SGDTRY_supports and resistances.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\supports and resistances\USDCNY_supports and resistances.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\supports and resistances\USDHKD_supports and resistances.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\ABT_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\ALB_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\A_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\BRK-B_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\CADCNY_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\CADHKD_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\EURUSD_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\HEI_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\HES_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\HIG_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\HKDILS_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\IBM_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\IRM_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\JPYCNY_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\NVDA_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\NVO_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\PDD_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\PM_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\SGDCNH_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\SYY_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\TRYSGD_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\TSLA_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\USDHKD_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\VST_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\VZ_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\WYNN_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\utilized data\ZBRA_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\volatility\AAPL_volatility.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\volatility\AMZN_volatility.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\volatility\BHP_volatility.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\volatility\BRK-B_volatility.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\volatility\NVDA_volatility.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\volatility\PG_volatility.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\1h\volatility\TSLA_volatility.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\30m\utilized data\AMZN_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="D:\Winston's Data\Downloads\csv\30m\utilized data\NVDA_utilized data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\order list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\portfolio holdings daily.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\portfolio holdings hourly.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\portfolio holdings weekly.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\text.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\tickers blacklist 1d.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\tickers blacklist 1h.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\tickers.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
