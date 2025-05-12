@@ -1,44 +1,45 @@
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 import math
 import statistics
-import re
-import os
+import urllib.request
+import urllib.parse
 
-import yfinance as yf
 import talib
 import pandas as pd
 import numpy as np
-# import multiprocessing
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from itertools import permutations, product
+# import multiprocessing
 # from tvDatafeed import TvDatafeed, Interval
 # import pylab
-import urllib.request
-import urllib.parse
 # from collections import OrderedDict
 # import ast
 # import itertools
-from itertools import permutations, product
 
 import config
-import process_variables
+import calculate_variables
 import get_time_delta
-import export_csv
+import file_management
+import get_tickers
 
 time1 = time.time()
 
-# settings
+# --------------------settings--------------------
+
 config.stocks_csv_file_path = 'D:/Winston\'s Data/Downloads/stocks_csv'
 
-config.equity = 'stocks'
+config.scrape_data_bool = True
+
+config.equity = 'stocks'  # currently supporting stocks
 config.nation = 'international'  # usa or international
 config.stock_number = 10
 config.candle_length = '1h'
-config.date_or_datetime = 'datetime'
-config.start_date = '2025-1-1'
-config.end_date = '2025-2-1'
+config.datetime_str = 'datetime'
+config.start_date = '2025-5-1'
+config.end_date = '2025-5-10'
 config.long = True
 config.short = True
 
@@ -84,14 +85,14 @@ config.stochastic_cross_level = 10  # only is applied if definitive_stochastic =
 config.stochastic_cross_expiration = 10  # only is applied if definitive_stochastic == True
 
 config.buy_signal_order_dict = {'divergences': 0,
-                         'breakouts': 1,
-                         'candle sticks': 1}
+                                'breakouts': 1,
+                                'candle sticks': 1}
 
 # order_dependant_buy_expirations = False
 
 config.buy_signal_expiration_dict = {'divergences': 5,  # if order_dependant_buy_expirations is True
-                              'breakouts': 8,
-                              'candle sticks': math.nan}
+                                     'breakouts': 8,
+                                     'candle sticks': math.nan}
 
 config.buy_signal_expiration_list = [10, 5]  # len(buy_signal_expiration_list) = len(buy_signal_order_dict) - 1
 
@@ -100,7 +101,9 @@ config.buy_signal_expiration_list = [10, 5]  # len(buy_signal_expiration_list) =
 
 config.quality_minimum = 0
 
-config.sell_signals_nested_list = [['sell signal indicator 1', 'artificial margin 1'], ['support resistance 1'], ['sell time 1']]  # sell signal indicator, support resistance, artificial margin, sell time
+config.sell_signals_nested_list = [['sell signal indicator 1', 'artificial margin 1'],  # sell signal indicator, support resistance, artificial margin, sell time
+                                   ['support resistance 1'],
+                                   ['sell time 1']]
 
 # sell signal indicator 1
 config.sell_signal_indicator_type_1 = 'rsi'  # rsi, k, d
@@ -140,20 +143,12 @@ config.sims = 10000
 config.hours = 8*21
 config.profit_minimum = 1
 
-# -------------------------------------------------
+# --------------------functions--------------------
 
-process_variables.process_variables()
+file_management.create_stocks_csv_folder()
+calculate_variables.calculate_variables()
 
-
-def raw_scraping_func():
-    if equity == 'stocks':
-        for ticker in tickers:
-            df = pd.DataFrame(yf.download(str(ticker), start=start_date, end=end_date, interval=candle_length))
-            df.index.name = 'datetime'
-            df = df.rename(columns={'Open': 'open', 'High': 'high', 'Low': 'low', 'Close': 'close'})
-            export_csv.export_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, ticker), df, 1)
-
-    print('raw_func complete')
+get_tickers.get_tickers()
 
 
 def rsi_func():
@@ -166,9 +161,9 @@ def rsi_func():
             rsi = talib.RSI(close, timeperiod=length)
             rsi_nested_list.append(rsi.tolist())
         df = pd.DataFrame(list(zip(*rsi_nested_list)), columns=rsi_lengths)
-        df.index = df_raw[date_or_datetime]
+        df.index = df_raw[datetime_str]
         # print(df_raw)
-        # print(df_raw[date_or_datetime])
+        # print(df_raw[datetime_str])
         export_csv.export_csv(stocks_csv_file_path + '/{}/rsi/{}_rsi.csv'.format(candle_length, ticker), df, 1)
 
     print('rsi_func complete')
@@ -198,7 +193,7 @@ def ema_func():
                     ema_list.append(close[day]/ema_list_price[day])
             ema_nested_list.append(ema_list)
         df = pd.DataFrame(list(zip(*ema_nested_list)), columns=ema_lengths)
-        df.index = df_raw[date_or_datetime]
+        df.index = df_raw[datetime_str]
         export_csv.export_csv(stocks_csv_file_path + '/{}/ema/{}_ema.csv'.format(candle_length, ticker), df, 1)
     print('ema_func complete')
 
@@ -212,7 +207,7 @@ def stochastic_func():
         stochastic = talib.STOCH(high, low, close, fastk_period=fastk_period, slowk_period=slowk_period, slowd_period=slowd_period)
         stochastic_nested_list = [stochastic[0], stochastic[1]]
         df = pd.DataFrame(list(zip(*stochastic_nested_list)), columns=['k', 'd'])
-        df.index = df_raw[date_or_datetime]
+        df.index = df_raw[datetime_str]
         export_csv.export_csv(stocks_csv_file_path + '/{}/stochastic/{}_stochastic.csv'.format(candle_length, ticker), df, 1)
     print('stochastic_func complete')
 
@@ -231,7 +226,7 @@ def volatility_func():
         volatility_list.insert(0, math.nan)
         volatility_series = pd.Series(volatility_list)
 
-        volatility_df = pd.DataFrame({date_or_datetime: df_raw[date_or_datetime], 'volatility': volatility_series.values})
+        volatility_df = pd.DataFrame({datetime_str: df_raw[datetime_str], 'volatility': volatility_series.values})
         export_csv.export_csv(stocks_csv_file_path + '/{}/volatility/{}_volatility.csv'.format(candle_length, ticker), volatility_df, 1)
 
     print('volatility_func complete')
@@ -277,7 +272,7 @@ def candle_stick_func():
 
             df = df.assign(bearish_candles=bearish_candle_stick_list)
 
-        df.index = df_raw[date_or_datetime]
+        df.index = df_raw[datetime_str]
 
         # candle_stick_list = [bullish_candle_stick_list, bearish_candle_stick_list]
         # df = pd.DataFrame(list(zip(*candle_stick_list)), columns=['bullish candle stick', 'bearish candle stick'])
@@ -407,7 +402,7 @@ def highs_lows_func():
                         high_list.append(True)
             high_low_nested_list = [high_list, price_list, position_list]
             df = pd.DataFrame(list(zip(*high_low_nested_list)), columns=['high', 'prices', 'point_position'])
-            df.index = df_raw[date_or_datetime]
+            df.index = df_raw[datetime_str]
             export_csv.export_csv(stocks_csv_file_path + '/{}/highs and lows/{}/highs price {}/{}_highs price {}.csv'.format(candle_length, version, version, ticker, version), df, 2)
 
     def lows_price_func(before_range, after_range, version):
@@ -451,7 +446,7 @@ def highs_lows_func():
                         low_list.append(True)
             low_low_nested_list = [low_list, price_list, position_list]
             df = pd.DataFrame(list(zip(*low_low_nested_list)), columns=['low', 'prices', 'point_position'])
-            df.index = df_raw[date_or_datetime]
+            df.index = df_raw[datetime_str]
             export_csv.export_csv(stocks_csv_file_path + '/{}/highs and lows/{}/lows price {}/{}_lows price {}.csv'.format(candle_length, version, version, ticker, version), df, 2)
 
     def highs_rsi_func(before_range, after_range, version):
@@ -495,7 +490,7 @@ def highs_lows_func():
                         high_list.append('True')
             high_high_nested_list = [high_list, price_list, position_list]
             df = pd.DataFrame(list(zip(*high_high_nested_list)), columns=['high', 'rsis', 'point_position'])
-            df.index = df_rsi[date_or_datetime]
+            df.index = df_rsi[datetime_str]
             export_csv.export_csv(stocks_csv_file_path + '/{}/highs and lows/{}/highs rsi {}/{}_highs rsi {}.csv'.format(candle_length, version, version, ticker, version), df, 2)
 
     def lows_rsi_func(before_range, after_range, version):
@@ -539,7 +534,7 @@ def highs_lows_func():
                         low_list.append('True')
             low_low_nested_list = [low_list, price_list, position_list]
             df = pd.DataFrame(list(zip(*low_low_nested_list)), columns=['low', 'rsis', 'point_position'])
-            df.index = df_rsi[date_or_datetime]
+            df.index = df_rsi[datetime_str]
             export_csv.export_csv(stocks_csv_file_path + '/{}/highs and lows/{}/lows rsi {}/{}_lows rsi {}.csv'.format(candle_length, version, version, ticker, version), df, 2)
 
     # 1, first divergence low
@@ -572,7 +567,7 @@ def support_and_resistance_func():
 
         supports_and_resistances_list_nested_list = []
 
-        for day in range(len(df_highs_price[date_or_datetime])):
+        for day in range(len(df_highs_price[datetime_str])):
             new_highs_list = highs_list[0:day+1]
             new_lows_list = lows_list[0:day+1]
 
@@ -611,7 +606,7 @@ def support_and_resistance_func():
 
             supports_and_resistances_list_nested_list.append(supports_and_resistances_value)
         df = pd.DataFrame(supports_and_resistances_list_nested_list, columns=['supports and resistances'])
-        df.index = df_highs_price[date_or_datetime]
+        df.index = df_highs_price[datetime_str]
         export_csv.export_csv(stocks_csv_file_path + '/{}/supports and resistances/{}_supports and resistances.csv'.format(candle_length, ticker), df, 1)
     print('support_and_resistance_func complete')
 
@@ -619,7 +614,7 @@ def support_and_resistance_func():
 def breakout_func():
     for ticker in tickers:
         df_raw = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, ticker), index_col=False, header=0)
-        dates = df_raw[str(date_or_datetime)].tolist()
+        dates = df_raw[str(datetime_str)].tolist()
         close = df_raw['close'].tolist()
 
         df_volatility = pd.read_csv(stocks_csv_file_path + '/{}/volatility/{}_volatility.csv'.format(candle_length, ticker), index_col=False, header=0)
@@ -872,7 +867,7 @@ def breakout_func():
                 empty_list = [None] * len(dates)
                 df = df.assign(bearish_breakout=empty_list)
 
-        df.index = df_raw[date_or_datetime]
+        df.index = df_raw[datetime_str]
         export_csv.export_csv(stocks_csv_file_path + '/{}/breakouts/{}_breakouts.csv'.format(candle_length, ticker), df, 1)
 
     print('breakout_func complete')
@@ -881,7 +876,7 @@ def breakout_func():
 def indentify_divergences_func():
     for ticker in tickers:
         df_rsi = pd.read_csv(stocks_csv_file_path + '/{}/rsi/{}_rsi.csv'.format(candle_length, ticker), index_col=False, header=0)
-        dates = df_rsi[date_or_datetime].tolist()
+        dates = df_rsi[datetime_str].tolist()
 
         df_volatility = pd.read_csv(stocks_csv_file_path + '/{}/volatility/{}_volatility.csv'.format(candle_length, ticker), index_col=False, header=0)
         volatility = df_volatility['volatility'].tolist()
@@ -900,13 +895,13 @@ def indentify_divergences_func():
             dropna_df_lows_rsi_2 = df_lows_rsi_2.dropna()
 
             low_price_list_1 = dropna_df_lows_price_1['prices'].tolist()
-            low_price_dates_list_1 = dropna_df_lows_price_1[date_or_datetime].tolist()
+            low_price_dates_list_1 = dropna_df_lows_price_1[datetime_str].tolist()
             low_rsi_list_1 = dropna_df_lows_rsi_1['rsis'].tolist()
-            low_rsi_dates_list_1 = dropna_df_lows_rsi_1[date_or_datetime].tolist()
+            low_rsi_dates_list_1 = dropna_df_lows_rsi_1[datetime_str].tolist()
             low_price_list_2 = dropna_df_lows_price_2['prices'].tolist()
-            low_price_dates_list_2 = dropna_df_lows_price_2[date_or_datetime].tolist()
+            low_price_dates_list_2 = dropna_df_lows_price_2[datetime_str].tolist()
             low_rsi_list_2 = dropna_df_lows_rsi_2['rsis'].tolist()
-            low_rsi_dates_list_2 = dropna_df_lows_rsi_2[date_or_datetime].tolist()
+            low_rsi_dates_list_2 = dropna_df_lows_rsi_2[datetime_str].tolist()
 
             price_dict_1 = dict(zip(low_price_dates_list_1, low_price_list_1))
             price_dict_2 = dict(zip(low_price_dates_list_2, low_price_list_2))
@@ -997,13 +992,13 @@ def indentify_divergences_func():
             dropna_df_highs_rsi_2 = df_highs_rsi_2.dropna()
 
             high_price_list_1 = dropna_df_highs_price_1['prices'].tolist()
-            high_price_dates_list_1 = dropna_df_highs_price_1[date_or_datetime].tolist()
+            high_price_dates_list_1 = dropna_df_highs_price_1[datetime_str].tolist()
             high_rsi_list_1 = dropna_df_highs_rsi_1['rsis'].tolist()
-            high_rsi_dates_list_1 = dropna_df_highs_rsi_1[date_or_datetime].tolist()
+            high_rsi_dates_list_1 = dropna_df_highs_rsi_1[datetime_str].tolist()
             high_price_list_2 = dropna_df_highs_price_2['prices'].tolist()
-            high_price_dates_list_2 = dropna_df_highs_price_2[date_or_datetime].tolist()
+            high_price_dates_list_2 = dropna_df_highs_price_2[datetime_str].tolist()
             high_rsi_list_2 = dropna_df_highs_rsi_2['rsis'].tolist()
-            high_rsi_dates_list_2 = dropna_df_highs_rsi_2[date_or_datetime].tolist()
+            high_rsi_dates_list_2 = dropna_df_highs_rsi_2[datetime_str].tolist()
 
             price_dict_1 = dict(zip(high_price_dates_list_1, high_price_list_1))
             price_dict_2 = dict(zip(high_price_dates_list_2, high_price_list_2))
@@ -1072,7 +1067,7 @@ def indentify_divergences_func():
             df = df.assign(bearish_divergences=divergences_list)
             df = df.assign(bearish_quality=divergence_quality_list)
 
-        df.index = df_rsi[date_or_datetime]
+        df.index = df_rsi[datetime_str]
         export_csv.export_csv(stocks_csv_file_path + '/{}/divergences/{}_divergences.csv'.format(candle_length, ticker), df, 1)
 
     print('identify_divergences_func complete')
@@ -1085,7 +1080,7 @@ def stochastic_crossover_func():
 
         if long:
             df_divergences = pd.read_csv(stocks_csv_file_path + '/{}/divergences/{}_divergences.csv'.format(candle_length, ticker), index_col=False, header=0)
-            dates = df_divergences[date_or_datetime].tolist()
+            dates = df_divergences[datetime_str].tolist()
             divergences = df_divergences['bullish_divergences'].tolist()
             divergence_quality_list = df_divergences['bullish_quality'].tolist()
 
@@ -1155,7 +1150,7 @@ def stochastic_crossover_func():
 
         if short:
             df_divergences = pd.read_csv(stocks_csv_file_path + '/{}/divergences/{}_divergences.csv'.format(candle_length, ticker), index_col=False, header=0)
-            dates = df_divergences[date_or_datetime].tolist()
+            dates = df_divergences[datetime_str].tolist()
             divergences = df_divergences['bearish_divergences'].tolist()
             divergence_quality_list = df_divergences['bearish_quality'].tolist()
 
@@ -1223,7 +1218,7 @@ def stochastic_crossover_func():
             df = df.assign(bearish_divergences=crossover_list)
             df = df.assign(bearish_quality=quality_list)
 
-        df.index = df_divergences[date_or_datetime]
+        df.index = df_divergences[datetime_str]
         export_csv.export_csv(stocks_csv_file_path + '/{}/stochastic crossover divergence/{}_stochastic crossover divergence.csv'.format(candle_length, ticker), df, 1)
 
     print('stochastic_crossover_func complete')
@@ -1318,12 +1313,12 @@ def buy_signal_func():
 
             if not stochastic_crossover:
                 df_divergences = pd.read_csv(stocks_csv_file_path + '/{}/divergences/{}_divergences.csv'.format(candle_length, ticker), index_col=False, header=0)
-                dates = df_divergences[date_or_datetime].tolist()
+                dates = df_divergences[datetime_str].tolist()
                 divergences = df_divergences['bullish_divergences'].tolist()
                 divergence_quality_list = df_divergences['bullish_quality'].tolist()
             else:
                 df_divergences = pd.read_csv(stocks_csv_file_path + '/{}/stochastic crossover divergence/{}_stochastic crossover divergence.csv'.format(candle_length, ticker), index_col=False, header=0)
-                dates = df_divergences[date_or_datetime].tolist()
+                dates = df_divergences[datetime_str].tolist()
                 divergences = df_divergences['bullish_divergences'].tolist()
                 divergence_quality_list = df_divergences['bullish_quality'].tolist()
 
@@ -1428,12 +1423,12 @@ def buy_signal_func():
 
             if not stochastic_crossover:
                 df_divergences = pd.read_csv(stocks_csv_file_path + '/{}/divergences/{}_divergences.csv'.format(candle_length, ticker), index_col=False, header=0)
-                dates = df_divergences[date_or_datetime].tolist()
+                dates = df_divergences[datetime_str].tolist()
                 divergences = df_divergences['bearish_divergences'].tolist()
                 divergence_quality_list = df_divergences['bearish_quality'].tolist()
             else:
                 df_divergences = pd.read_csv(stocks_csv_file_path + '/{}/stochastic crossover divergence/{}_stochastic crossover divergence.csv'.format(candle_length, ticker), index_col=False, header=0)
-                dates = df_divergences[date_or_datetime].tolist()
+                dates = df_divergences[datetime_str].tolist()
                 divergences = df_divergences['bearish_divergences'].tolist()
                 divergence_quality_list = df_divergences['bearish_quality'].tolist()
 
@@ -1526,7 +1521,7 @@ def buy_signal_func():
             df = df.assign(bearish_buy_signal=buy_signal_list)
             df = df.assign(bearish_quality=buy_signal_quality_list)
 
-        df.index = df_divergences[date_or_datetime]
+        df.index = df_divergences[datetime_str]
         export_csv.export_csv(stocks_csv_file_path + '/{}/buy signals/{}_buy signals.csv'.format(candle_length, ticker), df, 1)
 
     print('buy_signal_func complete')
@@ -1541,7 +1536,7 @@ def sell_signal_func():
             sup_res_raw = sup_res_df['supports and resistances'].tolist()
 
             df_raw = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, ticker), index_col=False, header=0)
-            dates = df_raw[date_or_datetime].tolist()
+            dates = df_raw[datetime_str].tolist()
             high_list = df_raw['high'].tolist()
             close_list = df_raw['close'].tolist()
 
@@ -1746,7 +1741,7 @@ def sell_signal_func():
             sup_res_raw = sup_res_df['supports and resistances'].tolist()
 
             df_raw = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, ticker), index_col=False, header=0)
-            dates = df_raw[date_or_datetime].tolist()
+            dates = df_raw[datetime_str].tolist()
             low_list = df_raw['low'].tolist()
             close_list = df_raw['close'].tolist()
 
@@ -1947,7 +1942,7 @@ def sell_signal_func():
             df = df.assign(bearish_sell_signal=sell_signal_list)
             df = df.assign(bearish_sell_price=sell_price_list)
 
-        df.index = df_raw[date_or_datetime]
+        df.index = df_raw[datetime_str]
         export_csv.export_csv(stocks_csv_file_path + '/{}/sell signals/{}_sell signals.csv'.format(candle_length, ticker), df, 1)
     print('sell_signal_func complete')
 
@@ -1963,7 +1958,7 @@ def back_test_func():
             del open_list[0:longest_indicator_length]
             close_list = df_raw['close'].tolist()
             del close_list[0:longest_indicator_length]
-            date_list = df_raw[date_or_datetime].tolist()
+            date_list = df_raw[datetime_str].tolist()
             del date_list[0:longest_indicator_length]
 
             df_buy = pd.read_csv(stocks_csv_file_path + '/{}/buy signals/{}_buy signals.csv'.format(candle_length, ticker), index_col=False, header=0)
@@ -2161,7 +2156,7 @@ def back_test_func():
 
             benchmark_list.append(close_list[-1] / open_list[0])
 
-            df = pd.DataFrame(order_list, columns=[date_or_datetime, 'type', 'price', 'quality'])
+            df = pd.DataFrame(order_list, columns=[datetime_str, 'type', 'price', 'quality'])
             export_csv.export_csv(stocks_csv_file_path + '/{}/order list/{}_order list.csv'.format(candle_length, ticker), df, 1)
 
     individual_stock_order_list_func()
@@ -2175,7 +2170,7 @@ def back_test_func():
         stock_order_number_list = []
         for ticker in tickers:
             order_list_df_individual = pd.read_csv(stocks_csv_file_path + '/{}/order list/{}_order list.csv'.format(candle_length, ticker), index_col=False, header=0)
-            order_date_list_individual = order_list_df_individual[date_or_datetime].tolist()
+            order_date_list_individual = order_list_df_individual[datetime_str].tolist()
             order_type_list_individual = order_list_df_individual['type'].tolist()
             order_price_list_individual = order_list_df_individual['price'].tolist()
             order_quality_list_individual = order_list_df_individual['quality'].tolist()
@@ -2237,18 +2232,18 @@ def back_test_func():
                     stock_order_count, price_list_count, price_list_count_date = order_list_append_func('short sold', stock_order_count, price_list_count, price_list_count_date)
 
         order_nested_list = [order_date_list, order_ticker_list, order_type_list, order_price_list, order_quality_list, stock_order_number_list]
-        order_df = pd.DataFrame(list(zip(*order_nested_list)), columns=[date_or_datetime, 'ticker', 'type', 'price', 'quality', 'stock order number'])
-        order_df = order_df.sort_values(by=[date_or_datetime, 'stock order number'], ascending=[True, True])
+        order_df = pd.DataFrame(list(zip(*order_nested_list)), columns=[datetime_str, 'ticker', 'type', 'price', 'quality', 'stock order number'])
+        order_df = order_df.sort_values(by=[datetime_str, 'stock order number'], ascending=[True, True])
         order_df.to_csv('order list.csv', mode='w', index=False)
 
         if not order_size_based_on_money:
-            order_date_list1 = order_df[date_or_datetime].tolist()
+            order_date_list1 = order_df[datetime_str].tolist()
             order_ticker_list1 = order_df['ticker'].tolist()
             order_type_list1 = order_df['type'].tolist()
             order_price_list1 = order_df['price'].tolist()
             order_quality_list1 = order_df['quality'].tolist()
             stock_order_number_list1 = order_df['stock order number'].tolist()
-            order_date_list2 = order_df[date_or_datetime].tolist()
+            order_date_list2 = order_df[datetime_str].tolist()
             order_ticker_list2 = order_df['ticker'].tolist()
             order_type_list2 = order_df['type'].tolist()
             order_price_list2 = order_df['price'].tolist()
@@ -2285,7 +2280,7 @@ def back_test_func():
                     positions_counter -= 1
                     # print(order_ticker_list1[enu], type_iterator, '-1', order_date_list1[enu])
             order_nested_list = [order_date_list2, order_ticker_list2, order_type_list2, order_price_list2, order_quality_list2, stock_order_number_list2]
-            order_df = pd.DataFrame(list(zip(*order_nested_list)), columns=[date_or_datetime, 'ticker', 'type', 'price', 'quality', 'stock order number'])
+            order_df = pd.DataFrame(list(zip(*order_nested_list)), columns=[datetime_str, 'ticker', 'type', 'price', 'quality', 'stock order number'])
             order_df.to_csv('order list.csv', mode='w', index=False)
 
     order_list_compiler_func()
@@ -2362,7 +2357,7 @@ def back_test_func():
             return money0, portfolio0, trade_profit0, trade_size0
 
         order_list_df = pd.read_csv('order list.csv', index_col=False, header=0)
-        order_date = order_list_df[date_or_datetime].tolist()
+        order_date = order_list_df[datetime_str].tolist()
         order_type = order_list_df['type'].tolist()
         order_ticker = order_list_df['ticker'].tolist()
         order_price = order_list_df['price'].tolist()
@@ -2455,7 +2450,7 @@ def back_test_func():
             portfolio_trade_size_list.append(portfolio_trade_size_appender)
             portfolio_price_list.append(portfolio_price_appender)
         df_order = pd.read_csv('order list.csv', index_col=False, header=0)
-        order_dates_list = df_order[date_or_datetime].tolist()
+        order_dates_list = df_order[datetime_str].tolist()
         years_str_raw = str(datetime.strptime(order_dates_list[-1][:10], '%Y-%m-%d') - datetime.strptime(order_dates_list[0][:10], '%Y-%m-%d'))[:-7]
         years_str = []
         for letter in years_str_raw:
@@ -2468,7 +2463,7 @@ def back_test_func():
 
         if calculate_sharpe_ratio:
             df_order = pd.read_csv('order list.csv', index_col=False, header=0)
-            order_dates_list = df_order[date_or_datetime].tolist()
+            order_dates_list = df_order[datetime_str].tolist()
             tickers_held_list = []
             trade_size_list = []
             price_list = []
@@ -2501,7 +2496,7 @@ def back_test_func():
                         price_list.append(None)
 
             portfolio_holdings_nested_list = [dates_list_compiled, tickers_held_list]
-            order_df = pd.DataFrame(list(zip(*portfolio_holdings_nested_list)), columns=[date_or_datetime, 'tickers held'])
+            order_df = pd.DataFrame(list(zip(*portfolio_holdings_nested_list)), columns=[datetime_str, 'tickers held'])
             order_df.to_csv('portfolio holdings hourly.csv', mode='w', index=False)
 
             sell_dates = []
@@ -2531,7 +2526,7 @@ def back_test_func():
                 if tickers_held is not None:
                     for y, ticker in enumerate(tickers_held):
                         df_raw = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, ticker), index_col=False, header=0)
-                        date_list = df_raw[date_or_datetime].tolist()
+                        date_list = df_raw[datetime_str].tolist()
                         close_list = df_raw['close'].tolist()
                         date_close_dict = {date_list[z]: close_list[z] for z in range(len(date_list))}
                         try:
@@ -2698,7 +2693,7 @@ def back_test_func():
         order_list_df.to_csv('order list.csv', mode='w', index=False)
 
         df_raw = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, tickers[0]), index_col=False, header=0)
-        raw_dates = df_raw[date_or_datetime].tolist()
+        raw_dates = df_raw[datetime_str].tolist()
         avg_port_list = []
         for count in range(len(order_date)-1):
             day_length = get_time_delta.get_time_delta(order_date[count + 1], order_date[count])
@@ -2847,7 +2842,7 @@ def graph_func():
 def graph_data_func():
     df_order = pd.read_csv('order list.csv', index_col=False, header=0)
     profits_list = df_order['profit_of_trade_discounting_trade_size'].tolist()
-    datetime_list = df_order[str(date_or_datetime)].tolist()
+    datetime_list = df_order[str(datetime_str)].tolist()
 
     new_profits_list = []
     new_datetime_list = []
@@ -2866,94 +2861,36 @@ def graph_data_func():
     plt.show()
 
 
-if __name__ == '__main__':
-    raw_scraping = True
-    if equity == 'stocks' and raw_scraping:
-        if nation == 'usa':
-            sheet_id = "1U592Qmdg0GAGItmv96Ou6c_WvsFQ14QCkbKXLNMQOEs"
-            sp500 = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv")
-            pre_tickers_dot = list(sp500.loc[:])
-            tickers0 = []
-            tickers1 = []
-            for i in range(len(pre_tickers_dot)):
-                tickers0.append(pre_tickers_dot[i].replace(".", "_"))
-                space_index = tickers0[i - 1].index(" ")
-                tickers1.append(tickers0[i - 1][0:space_index])
-            tickers1.remove('Symbol')
-            tickers1.remove('Symbol')
-            tickers1.remove('BF_B')
-            tickers1.remove('BRK_B')
-            tickers_df0 = pd.DataFrame(tickers1)
-            tickers_df0.to_csv('tickers', mode='w')
-        elif nation == 'international':
-            url = 'https://stockanalysis.com/list/biggest-companies/'
-            headers = {'User-Agent': 'Mozilla/5.0'}
+# rsi_func()
+# ema_func()
+# stochastic_func()
+# volatility_func()
+# candle_stick_func()
+#
+# rsi_quality_func()
+# ema_quality_func()
+# stochastic_quality_func()
+#
+# highs_lows_func()
+#
+# support_and_resistance_func()
+#
+# breakout_func()
+#
+# indentify_divergences_func()
+#
+# stochastic_crossover_func()
 
-            req = urllib.request.Request(url, headers=headers)
-            resp = urllib.request.urlopen(req)
-            resp_data = resp.read()
+# buy_signal_func()
 
-            tickers_list = re.findall(r's:"(\w{1,})', str(resp_data))
-            tickers_list = tickers_list[:stock_number]
-            tickers_list = list(set(tickers_list))
-            try:
-                tickers_list.remove('BRK')
-                tickers_list.append('BRK-B')
-            except ValueError:
-                pass
-            try:
-                tickers_list.remove('FER')
-            except ValueError:
-                pass
+# sell_signal_func()
+#
+# back_test_func()
 
-            tickers_df0 = pd.DataFrame(tickers_list, columns=['tickers'])
-            tickers_df0.to_csv('tickers.csv', mode='w')
-    if equity == 'stocks':
-        tickers_df1 = pd.read_csv('tickers.csv', index_col=False, header=0)
-        tickers = tickers_df1['tickers'].tolist()
-        config.tickers = tickers
-    dates_list_compiled = []
-    if raw_scraping:
-        tickers_blacklist_list = []
-        raw_scraping_func()
-    for tick in tickers:
-        df_raw_compiled = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, tick), index_col=False, header=0)
-        dates_list_for_compiler = df_raw_compiled[date_or_datetime].tolist()
-        dates_list_compiled = dates_list_compiled + dates_list_for_compiler
-    dates_list_compiled = list(set(dates_list_compiled))
-    dates_list_compiled.sort()
-    config.dates_list_compiled = dates_list_compiled
+# graph_func()
 
-    # rsi_func()
-    # ema_func()
-    # stochastic_func()
-    # volatility_func()
-    # candle_stick_func()
-    #
-    # rsi_quality_func()
-    # ema_quality_func()
-    # stochastic_quality_func()
-    #
-    # highs_lows_func()
-    #
-    # support_and_resistance_func()
-    #
-    # breakout_func()
-    #
-    # indentify_divergences_func()
-    #
-    # stochastic_crossover_func()
+# graph_data_func()
 
-    # buy_signal_func()
-
-    # sell_signal_func()
-    #
-    # back_test_func()
-
-    # graph_func()
-
-    # graph_data_func()
-
-    time2 = time.time()
-    timer = time2 - time1
-    print('Finished in', int(timer//3600), 'hours', int((timer % 3600)//60), 'minutes', timer % 60, 'seconds')
+time2 = time.time()
+timer = time2 - time1
+print('Finished in', int(timer//3600), 'hours', int((timer % 3600)//60), 'minutes', timer % 60, 'seconds')

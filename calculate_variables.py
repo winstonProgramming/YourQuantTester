@@ -1,6 +1,6 @@
 import config
 
-def process_variables():
+def calculate_variables():
     # config.longest_indicator_list = [rsi_length, ema_length, fastk_period, slowk_period, slowd_period, rolling_volatility_length, pre_earnings_date_omission]
     config.longest_indicator_list = [config.rsi_length,
                                      config.ema_length,

@@ -2054,6 +2054,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="D:\Winston's Data\Downloads\stocks_csv\1h\raw data\AAPL_raw data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\order list.csv">
           <value>
             <Attribute>

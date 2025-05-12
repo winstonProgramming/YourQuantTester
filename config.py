@@ -1,10 +1,13 @@
+# --------------------inputted variables--------------------
 stocks_csv_file_path = None
+
+scrape_data_bool = None
 
 equity = None
 nation = None
 stock_number = None
 candle_length = None
-date_or_datetime = None
+datetime_str = None
 start_date = None
 end_date = None
 long = None
@@ -90,15 +93,13 @@ sims = None
 hours = None
 profit_minimum = None
 
-# -------------------------------------------------
-
+# --------------------calculated variables--------------------
 longest_indicator_list = None
 longest_indicator_length = None
 
 buy_signal_order_dict = None
 
-# -------------------------------------------------
-
+# --------------------get tickers calculated variables--------------------
 tickers = None
 
 dates_list_compiled = None
