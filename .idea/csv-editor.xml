@@ -2061,6 +2061,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="D:\Winston's Data\Downloads\stocks_csv\1h\rsi\AVGO_rsi.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\order list.csv">
           <value>
             <Attribute>
@@ -2083,13 +2090,6 @@
           </value>
         </entry>
         <entry key="\portfolio holdings weekly.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\text.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
