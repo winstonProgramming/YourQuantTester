@@ -2843,7 +2843,7 @@ def graph_data_func():
 
 
 config.scrape_data_bool = True
-indicators.rsi()
+rsi.rsi()
 # ema_func()
 # stochastic_func()
 # volatility_func()
