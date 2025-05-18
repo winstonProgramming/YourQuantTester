@@ -3,26 +3,11 @@ import urllib.parse
 import re
 
 import pandas as pd
-import yfinance as yf
 
 import config
-import file_management
-
+import scrape_data
 
 def get_tickers():
-    def scrape_data():
-        if config.equity == 'stocks':
-            for ticker in config.tickers:
-                df = pd.DataFrame(yf.download(str(ticker),
-                                              start=config.start_date,
-                                              end=config.end_date,
-                                              interval=config.candle_length))
-                df.index.name = 'datetime'
-                df.columns = [col[0].lower() for col in df.columns]
-                file_management.export_csv(f'{config.stocks_csv_file_path}/{config.candle_length}/raw data/{ticker}_raw data.csv', df, 1)
-
-        print('raw scraping complete')
-
     if config.equity == 'stocks' and config.scrape_data_bool:
         if config.nation == 'usa':
             sheet_id = "1U592Qmdg0GAGItmv96Ou6c_WvsFQ14QCkbKXLNMQOEs"
@@ -61,15 +46,20 @@ def get_tickers():
 
             tickers_df0 = pd.DataFrame(tickers_list, columns=['tickers'])
             tickers_df0.to_csv('tickers.csv', mode='w')
+
     if config.equity == 'stocks':
         tickers_df1 = pd.read_csv('tickers.csv', index_col=False, header=0)
         tickers = tickers_df1['tickers'].tolist()
         config.tickers = tickers
-    dates_list_compiled = []
+
     if config.scrape_data_bool:
-        scrape_data()
+        scrape_data.scrape_data()
+
+    dates_list_compiled = []
     for tick in config.tickers:
-        df_raw_compiled = pd.read_csv(f'{config.stocks_csv_file_path}/{config.candle_length}/raw data/{tick}_raw data.csv', index_col=False, header=0)
+        df_raw_compiled = pd.read_csv(
+            f'{config.stocks_csv_file_path}/{config.candle_length}/raw data/{tick}_raw data.csv',
+            index_col=False, header=0)
         dates_list_for_compiler = df_raw_compiled[config.datetime_str].tolist()
         dates_list_compiled = dates_list_compiled + dates_list_for_compiler
     dates_list_compiled = list(set(dates_list_compiled))

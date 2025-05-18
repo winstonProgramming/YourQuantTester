@@ -20,10 +20,11 @@ from itertools import permutations, product
 # import itertools
 
 import config
-import calculate_variables
+import calibrate_config
 import get_time_delta
 import file_management
 import get_tickers
+import indicators
 
 time1 = time.time()
 
@@ -31,19 +32,17 @@ time1 = time.time()
 
 config.stocks_csv_file_path = 'D:/Winston\'s Data/Downloads/stocks_csv'
 
-config.scrape_data_bool = True
-
 config.equity = 'stocks'  # currently supporting stocks
 config.nation = 'international'  # usa or international
 config.stock_number = 10
 config.candle_length = '1h'
 config.datetime_str = 'datetime'
 config.start_date = '2025-5-1'
-config.end_date = '2025-5-10'
+config.end_date = '2025-5-15'
 config.long = True
 config.short = True
 
-config.rsi_length = 12
+config.rsi_lengths = [12]
 config.ema_length = 12
 config.fastk_period = 5
 config.slowk_period = 3
@@ -146,27 +145,9 @@ config.profit_minimum = 1
 # --------------------functions--------------------
 
 file_management.create_stocks_csv_folder()
-calculate_variables.calculate_variables()
+calibrate_config.calibrate_config()
 
 get_tickers.get_tickers()
-
-
-def rsi_func():
-    rsi_lengths = [rsi_length]
-    for ticker in tickers:
-        df_raw = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, ticker), index_col=False, header=0)
-        close = pd.Series(df_raw.close)
-        rsi_nested_list = []
-        for length in rsi_lengths:
-            rsi = talib.RSI(close, timeperiod=length)
-            rsi_nested_list.append(rsi.tolist())
-        df = pd.DataFrame(list(zip(*rsi_nested_list)), columns=rsi_lengths)
-        df.index = df_raw[datetime_str]
-        # print(df_raw)
-        # print(df_raw[datetime_str])
-        export_csv.export_csv(stocks_csv_file_path + '/{}/rsi/{}_rsi.csv'.format(candle_length, ticker), df, 1)
-
-    print('rsi_func complete')
 
 
 def ema_func():
@@ -2861,7 +2842,8 @@ def graph_data_func():
     plt.show()
 
 
-# rsi_func()
+config.scrape_data_bool = True
+indicators.rsi()
 # ema_func()
 # stochastic_func()
 # volatility_func()

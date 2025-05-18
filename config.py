@@ -1,8 +1,6 @@
 # --------------------inputted variables--------------------
 stocks_csv_file_path = None
 
-scrape_data_bool = None
-
 equity = None
 nation = None
 stock_number = None
@@ -13,7 +11,7 @@ end_date = None
 long = None
 short = None
 
-rsi_length = None
+rsi_lengths = None
 ema_length = None
 fastk_period = None
 slowk_period = None
@@ -103,3 +101,6 @@ buy_signal_order_dict = None
 tickers = None
 
 dates_list_compiled = None
+
+# ----------------------------------------
+scrape_data_bool = None
