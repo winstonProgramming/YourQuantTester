@@ -11,7 +11,7 @@ end_date = None
 long = None
 short = None
 
-rsi_lengths = None
+rsi_length = None
 ema_length = None
 fastk_period = None
 slowk_period = None
