@@ -417,6 +417,7 @@ def breakouts():
                         bullish_breakout_list.append(None)
                     else:
                         bullish_breakout_list.append('long')
+                        print(ticker, 'breakout')
 
                 df = df.assign(bullish_breakout=bullish_breakout_list)
             else:
@@ -560,7 +561,7 @@ def divergences():
         df_volatility = pd.read_csv(
             config.stocks_csv_file_path + f'/{config.candle_length}/volatility/{ticker}_volatility.csv',
             index_col=False, header=0)
-        volatility = df_volatility['volatility'].tolist()
+        volatility_list = df_volatility['volatility'].tolist()
 
         df = pd.DataFrame()
 
@@ -638,13 +639,14 @@ def divergences():
             divergence_quality_list = []
             for x in range(len(matching_low_dates_2) - 1):
                 time_difference = get_time_delta.get_time_delta(matching_low_dates_2[x + 1], matching_low_dates_2[x])
+                volatility = volatility_list[get_time_delta.get_time_delta(matching_low_dates_2[x + 1], config.dates_list_compiled[0])]
                 if (matching_low_prices_2[x] > matching_low_prices_2[x + 1]
                         and matching_low_rsis_2[x] < matching_low_rsis_2[x + 1]
                         and time_difference < config.divergence_expiration
                         and index_2[x] in index_1
-                        and not math.isnan(volatility[x + 1])):  # standard divergence
+                        and not math.isnan(volatility)):  # standard divergence
                     divergences.append(matching_low_dates_2[x + 1])
-                    price_difference = ((matching_low_prices_2[x + 1] / matching_low_prices_2[x])-1)/volatility[x + 1]
+                    price_difference = ((matching_low_prices_2[x + 1] / matching_low_prices_2[x])-1)/volatility
                     rsi_difference = (matching_low_rsis_2[x + 1] - matching_low_rsis_2[x])
                     price_difference_quality = config.price_difference_quality_multiplier * -price_difference
                     rsi_difference_quality = config.rsi_difference_quality_multiplier * rsi_difference
@@ -665,6 +667,7 @@ def divergences():
                     divergences_list.append('long')
                     divergence_quality_list.append(divergence_quality[counter])
                     counter += 1
+                    print(ticker, 'divergence')
                 else:
                     divergences_list.append(None)
                     divergence_quality_list.append(None)
@@ -746,13 +749,14 @@ def divergences():
             divergence_quality_list = []
             for x in range(len(matching_high_dates_2) - 1):
                 time_difference = get_time_delta.get_time_delta(matching_high_dates_2[x + 1], matching_high_dates_2[x])
+                volatility = volatility_list[get_time_delta.get_time_delta(matching_high_dates_2[x + 1], config.dates_list_compiled[0])]
                 if (matching_high_prices_2[x] < matching_high_prices_2[x + 1]
                         and matching_high_rsis_2[x] > matching_high_rsis_2[x + 1]
                         and time_difference < config.divergence_expiration
                         and index_2[x] in index_1
-                        and not math.isnan(volatility[x + 1])):  # standard divergence
+                        and not math.isnan(volatility)):  # standard divergence
                     divergences.append(matching_high_dates_2[x + 1])
-                    price_difference = ((matching_high_prices_2[x + 1] / matching_high_prices_2[x])-1)/volatility[x + 1]
+                    price_difference = ((matching_high_prices_2[x + 1] / matching_high_prices_2[x])-1)/volatility
                     rsi_difference = (matching_high_rsis_2[x + 1] - matching_high_rsis_2[x])
                     price_difference_quality = price_difference * config.price_difference_quality_multiplier
                     rsi_difference_quality = -rsi_difference * config.rsi_difference_quality_multiplier
@@ -776,7 +780,7 @@ def divergences():
             config.stocks_csv_file_path + f'/{config.candle_length}/divergences/{ticker}_divergences.csv',
             df, 1)
 
-    print('identify_divergences complete')
+    print('divergences complete')
 
 def stochastic_crossovers():
     for ticker in config.tickers:
