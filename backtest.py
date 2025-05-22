@@ -1,7 +1,13 @@
+from datetime import datetime
+import statistics
+
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 import config
 import file_management
+import get_time_delta
 
 def back_test_func():
     benchmark_list = []
@@ -297,7 +303,7 @@ def back_test_func():
         order_df.to_csv('order list.csv', mode='w', index=False)
 
         if not config.order_size_based_on_money:
-            order_date_list1 = order_df[dconfig.atetime_str].tolist()
+            order_date_list1 = order_df[config.datetime_str].tolist()
             order_ticker_list1 = order_df['ticker'].tolist()
             order_type_list1 = order_df['type'].tolist()
             order_price_list1 = order_df['price'].tolist()
@@ -387,14 +393,14 @@ def back_test_func():
                 trade_size_quality_modifier = (1-(quality_difference/(order_quality0-config.lowest_order_quality+quality_difference+config.c)))**config.d
                 trade_size_quality_modifier_list.append(trade_size_quality_modifier)
                 trade_size0 = trade_size_before_quality*trade_size_quality_modifier
-                trade_size_list.append(((1 - (quality_difference / (order_quality0 - lowest_order_quality + quality_difference + c))) ** d)*(((money/estimated_value0)/a)**b))
-                portfolio0[ticker0] = [trade_size0/price0, price0, date0, ((1 - (quality_difference / (order_quality0 - lowest_order_quality + quality_difference + c))) ** d)*(((money/estimated_value0)/a)**b)]
-            if order_size_based_on_money and not order_size_based_on_quality:
-                trade_size0 = (money/a)**b
-                trade_size_list.append(((money/estimated_value0)/a)**b)
-                portfolio0[ticker0] = [trade_size0/price0, price0, date0, ((money/estimated_value0)/a)**b]
-            if not order_size_based_on_money:
-                trade_size0 = estimated_value0 / a
+                trade_size_list.append(((1 - (quality_difference / (order_quality0 - config.lowest_order_quality + quality_difference + config.c))) ** config.d)*(((money/estimated_value0)/config.a)**config.b))
+                portfolio0[ticker0] = [trade_size0/price0, price0, date0, ((1 - (quality_difference / (order_quality0 - config.lowest_order_quality + quality_difference + config.c))) ** config.d)*(((money/estimated_value0)/config.a)**config.b)]
+            if config.order_size_based_on_money and not config.order_size_based_on_quality:
+                trade_size0 = (money/config.a)**config.b
+                trade_size_list.append(((money/estimated_value0)/config.a)**config.b)
+                portfolio0[ticker0] = [trade_size0/price0, price0, date0, ((money/estimated_value0)/config.a)**config.b]
+            if not config.order_size_based_on_money:
+                trade_size0 = estimated_value0 / config.a
                 trade_size_list.append(trade_size0)
                 portfolio0[ticker0] = [trade_size0 / price0, price0, date0, trade_size0]
             money0 -= trade_size0
@@ -415,7 +421,7 @@ def back_test_func():
             return money0, portfolio0, trade_profit0, trade_size0
 
         order_list_df = pd.read_csv('order list.csv', index_col=False, header=0)
-        order_date = order_list_df[datetime_str].tolist()
+        order_date = order_list_df[config.datetime_str].tolist()
         order_type = order_list_df['type'].tolist()
         order_ticker = order_list_df['ticker'].tolist()
         order_price = order_list_df['price'].tolist()
@@ -461,7 +467,7 @@ def back_test_func():
         portfolio_price_list = []
         for count in range(len(order_date)):
             if order_type[count] == 'long bought':
-                money, portfolio = long_buy_func(money, portfolio, order_ticker[count], order_price[count], estimated_value, order_date[count], order_quality[count], lowest_order_quality, highest_order_quality)
+                money, portfolio = long_buy_func(money, portfolio, order_ticker[count], order_price[count], estimated_value, order_date[count], order_quality[count], config.lowest_order_quality, config.highest_order_quality)
                 trades += 1
                 long_trades += 1
                 trade_profit_list.append('')
@@ -475,7 +481,7 @@ def back_test_func():
                 long_trade_profit_list.append(trade_profit)
                 long_trade_profit_list_accounting_trade_size.append(trade_profit*trade_size)
             if order_type[count] == 'short bought':
-                money, portfolio = short_buy_func(money, portfolio, order_ticker[count], order_price[count], estimated_value, order_date[count], order_quality[count], lowest_order_quality, highest_order_quality)
+                money, portfolio = short_buy_func(money, portfolio, order_ticker[count], order_price[count], estimated_value, order_date[count], order_quality[count], config.lowest_order_quality, config.highest_order_quality)
                 trades += 1
                 short_trades += 1
                 trade_profit_list.append('')
@@ -508,7 +514,7 @@ def back_test_func():
             portfolio_trade_size_list.append(portfolio_trade_size_appender)
             portfolio_price_list.append(portfolio_price_appender)
         df_order = pd.read_csv('order list.csv', index_col=False, header=0)
-        order_dates_list = df_order[datetime_str].tolist()
+        order_dates_list = df_order[config.datetime_str].tolist()
         years_str_raw = str(datetime.strptime(order_dates_list[-1][:10], '%Y-%m-%d') - datetime.strptime(order_dates_list[0][:10], '%Y-%m-%d'))[:-7]
         years_str = []
         for letter in years_str_raw:
@@ -519,15 +525,15 @@ def back_test_func():
                 pass
         years = int(''.join(years_str))/365
 
-        if calculate_sharpe_ratio:
+        if config.calculate_sharpe_ratio:
             df_order = pd.read_csv('order list.csv', index_col=False, header=0)
-            order_dates_list = df_order[datetime_str].tolist()
+            order_dates_list = df_order[config.datetime_str].tolist()
             tickers_held_list = []
             trade_size_list = []
             price_list = []
             order_date_counter = 0
 
-            for compiled_date in dates_list_compiled:
+            for compiled_date in config.dates_list_compiled:
                 tickers_held_appender = []
                 trade_size_appender = []
                 price_appender = []
@@ -553,8 +559,8 @@ def back_test_func():
                         trade_size_list.append(trade_size_list[-1])
                         price_list.append(None)
 
-            portfolio_holdings_nested_list = [dates_list_compiled, tickers_held_list]
-            order_df = pd.DataFrame(list(zip(*portfolio_holdings_nested_list)), columns=[datetime_str, 'tickers held'])
+            portfolio_holdings_nested_list = [config.dates_list_compiled, tickers_held_list]
+            order_df = pd.DataFrame(list(zip(*portfolio_holdings_nested_list)), columns=[config.datetime_str, 'tickers held'])
             order_df.to_csv('portfolio holdings hourly.csv', mode='w', index=False)
 
             sell_dates = []
@@ -579,23 +585,23 @@ def back_test_func():
             date_weekly_list = []
             portfolio_value_weekly_list = []
             for x, tickers_held in enumerate(tickers_held_list[0:-1]):
-                yesterday = dates_list_compiled[x][0:10]
-                today = dates_list_compiled[x + 1][0:10]
+                yesterday = config.dates_list_compiled[x][0:10]
+                today = config.dates_list_compiled[x + 1][0:10]
                 if tickers_held is not None:
                     for y, ticker in enumerate(tickers_held):
-                        df_raw = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, ticker), index_col=False, header=0)
-                        date_list = df_raw[datetime_str].tolist()
+                        df_raw = pd.read_csv(config.stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(config.candle_length, ticker), index_col=False, header=0)
+                        date_list = df_raw[config.datetime_str].tolist()
                         close_list = df_raw['close'].tolist()
                         date_close_dict = {date_list[z]: close_list[z] for z in range(len(date_list))}
                         try:
-                            if dates_list_compiled[x] in sell_dates and ticker in sell_tickers:
-                                if sell_dates.index(dates_list_compiled[x]) == sell_tickers.index(ticker):
-                                    sell_date_index = sell_dates.index(dates_list_compiled[x])
-                                    portfolio_value += ((sell_prices[sell_date_index]/date_close_dict.get(dates_list_compiled[x]))-1) * trade_size_list[x][y]
+                            if config.dates_list_compiled[x] in sell_dates and ticker in sell_tickers:
+                                if sell_dates.index(config.dates_list_compiled[x]) == sell_tickers.index(ticker):
+                                    sell_date_index = sell_dates.index(config.dates_list_compiled[x])
+                                    portfolio_value += ((sell_prices[sell_date_index]/date_close_dict.get(config.dates_list_compiled[x]))-1) * trade_size_list[x][y]
                                 else:
-                                    portfolio_value += ((date_close_dict.get(dates_list_compiled[x + 1]) / date_close_dict.get(dates_list_compiled[x])) - 1) * trade_size_list[x][y]
+                                    portfolio_value += ((date_close_dict.get(config.dates_list_compiled[x + 1]) / date_close_dict.get(config.dates_list_compiled[x])) - 1) * trade_size_list[x][y]
                             else:
-                                portfolio_value += ((date_close_dict.get(dates_list_compiled[x + 1]) / date_close_dict.get(dates_list_compiled[x])) - 1) * trade_size_list[x][y]
+                                portfolio_value += ((date_close_dict.get(config.dates_list_compiled[x + 1]) / date_close_dict.get(config.dates_list_compiled[x])) - 1) * trade_size_list[x][y]
                         except TypeError:
                             pass
                 portfolio_value_list.append(portfolio_value)
@@ -641,13 +647,13 @@ def back_test_func():
 
             yearly_return = money ** (1/years) - 1
 
-            sharpe_ratio = (yearly_return - risk_free_rate) / annual_volatility
+            sharpe_ratio = (yearly_return - config.risk_free_rate) / annual_volatility
 
-            if calc_profit_odds:
+            if config.calc_profit_odds:
                 var_list = []
 
-                for x in range(int(hours)):
-                    var_list.append(np.random.uniform(statistics.geometric_mean(pct_list_geometric) - hourly_volatility, statistics.geometric_mean(pct_list_geometric) + hourly_volatility, sims))
+                for x in range(int(config.hours)):
+                    var_list.append(np.random.uniform(statistics.geometric_mean(pct_list_geometric) - hourly_volatility, statistics.geometric_mean(pct_list_geometric) + hourly_volatility, config.sims))
 
                 new_var_list = []
                 for x in range(len(var_list[0])):
@@ -659,11 +665,11 @@ def back_test_func():
 
                 profit_result = np.prod(new_var_list, axis=1)
 
-                profit_odds_result = ((profit_result > profit_minimum).sum() / sims)
+                profit_odds_result = ((profit_result > config.profit_minimum).sum() / config.sims)
 
                 plt.figure()
                 plt.hist(profit_result, density=True, edgecolor='white')
-                plt.axvline(profit_minimum, color='r')
+                plt.axvline(config.profit_minimum, color='r')
                 plt.show()
 
         trade_profit_list_ui = []
@@ -689,7 +695,7 @@ def back_test_func():
             else:
                 trade_profit_list_accounting_trade_size_ui.append('')
 
-        if long:
+        if config.long:
             long_trade_profit_list_ui = []
             long_avg_win_list = []
             long_avg_loss_list = []
@@ -713,7 +719,7 @@ def back_test_func():
                 else:
                     long_trade_profit_list_accounting_trade_size_ui.append('')
 
-        if short:
+        if config.short:
             short_trade_profit_list_ui = []
             short_avg_win_list = []
             short_avg_loss_list = []
@@ -741,7 +747,7 @@ def back_test_func():
         order_list_df = order_list_df.assign(profit_of_trade_discounting_trade_size=trade_profit_list_ui)
         # order_list_df = order_list_df.assign(profit_of_trade_accounting_trade_size=trade_profit_list_accounting_trade_size_ui)
         # order_list_df = order_list_df.assign(trade_size=trade_size_list)
-        if order_size_based_on_quality:
+        if config.order_size_based_on_quality:
             order_list_df = order_list_df.assign(trade_size_before_quality=trade_size_before_quality_list)
             order_list_df = order_list_df.assign(trade_size_quality_modifier=trade_size_quality_modifier_list)
         order_list_df = order_list_df.assign(trade_duration=trade_duration_list)
@@ -750,8 +756,8 @@ def back_test_func():
         # order_list_df = order_list_df.assign(money=money_list)
         order_list_df.to_csv('order list.csv', mode='w', index=False)
 
-        df_raw = pd.read_csv(stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(candle_length, tickers[0]), index_col=False, header=0)
-        raw_dates = df_raw[datetime_str].tolist()
+        df_raw = pd.read_csv(config.stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(config.candle_length, config.tickers[0]), index_col=False, header=0)
+        raw_dates = df_raw[config.datetime_str].tolist()
         avg_port_list = []
         for count in range(len(order_date)-1):
             day_length = get_time_delta.get_time_delta(order_date[count + 1], order_date[count])
@@ -777,7 +783,7 @@ def back_test_func():
         average_profit_per_trade_ats = statistics.geometric_mean(geometric_trade_profit_list_ats)
         average_profit_per_trade_ats = average_profit_per_trade_ats - 1
 
-        if long:
+        if config.long:
             long_trade_profit_list_without_nones = list(filter(None, long_trade_profit_list))
             long_geometric_trade_profit_list = []
             for trade in long_trade_profit_list_without_nones:
@@ -792,7 +798,7 @@ def back_test_func():
             long_average_profit_per_trade_ats = statistics.geometric_mean(long_geometric_trade_profit_list_ats)
             long_average_profit_per_trade_ats = long_average_profit_per_trade_ats - 1
 
-        if short:
+        if config.short:
             short_trade_profit_list_without_nones = list(filter(None, short_trade_profit_list))
             short_geometric_trade_profit_list = []
             for trade in short_trade_profit_list_without_nones:
@@ -810,28 +816,28 @@ def back_test_func():
         def print_data_func():
             try:
                 print('----------------------------------------')
-                print('start date: ' + start_date)
-                print('end date: ' + end_date)
+                print('start date: ' + config.start_date)
+                print('end date: ' + config.end_date)
                 print('model: ' + str((money-1)*100) + '%')
                 print('average percentage of portfolio in the market: ' + str(avg_port*100) + '%')
                 print('trades: ' + str(trades))
                 print('trades won: ' + str(trades_won))
                 print('trades lost: ' + str(trades_lost))
-                if long and short:
+                if config.long and config.short:
                     print('long trades won: ' + str(long_trades_won))
                     print('long trades lost: ' + str(long_trades_lost))
                     print('short trades won: ' + str(short_trades_won))
                     print('short trades lost: ' + str(short_trades_lost))
                 print('average profit per trade (discounting trade size): ' + str(average_profit_per_trade*100) + '%')
                 print('average profit per trade (accounting trade size): ' + str(average_profit_per_trade_ats*100) + '%')
-                if long and short:
+                if config.long and config.short:
                     print('average profit per long trade (discounting trade size): ' + str(long_average_profit_per_trade*100) + '%')
                     print('average profit per long trade (accounting trade size): ' + str(long_average_profit_per_trade_ats*100) + '%')
                     print('average profit per short trade (discounting trade size): ' + str(short_average_profit_per_trade*100) + '%')
                     print('average profit per short trade (accounting trade size): ' + str(short_average_profit_per_trade_ats*100) + '%')
                 print('average profit of winning trade: ' + str((statistics.geometric_mean(avg_win_list)-1)*100) + '%')
                 print('average profit of losing trade: ' + str((statistics.geometric_mean(avg_loss_list)-1)*100) + '%')
-                if long and short:
+                if config.long and config.short:
                     print('average profit of winning long trade: ' + str((statistics.geometric_mean(long_avg_win_list)-1)*100) + '%')
                     print('average profit of losing long trade: ' + str((statistics.geometric_mean(long_avg_loss_list)-1)*100) + '%')
                     print('average profit of winning short trade: ' + str((statistics.geometric_mean(short_avg_win_list)-1)*100) + '%')
@@ -840,7 +846,7 @@ def back_test_func():
                 print('most positions at once: ' + str(sorted_portfolio_size_list[0]))
             except (IndexError, statistics.StatisticsError):
                 print('lack of positions taken')
-            if calculate_sharpe_ratio:
+            if config.calculate_sharpe_ratio:
                 print('----------------------------------------')
                 print('yearly sharpe ratio')
                 print('hourly return differential')
@@ -851,8 +857,8 @@ def back_test_func():
                 print('weeks won: ' + str(weeks_won))
                 print('weeks uninvested: ' + str(weeks_uninvested))
                 print('weeks lost: ' + str(weeks_lost))
-            if calc_profit_odds:
-                print('chance of making more than a ' + str((profit_minimum-1) * 100) + '% return within ' + str(hours) + ' hours: ' + str(profit_odds_result*100) + '%')
+            if config.calc_profit_odds:
+                print('chance of making more than a ' + str((config.profit_minimum-1) * 100) + '% return within ' + str(config.hours) + ' hours: ' + str(profit_odds_result*100) + '%')
             print('----------------------------------------')
             # print('benchmark: ' + str((statistics.mean(benchmark_list)-1)*100) + '%')
             # print('benchmark hours in market: ' + len(dates_list_compiled))
