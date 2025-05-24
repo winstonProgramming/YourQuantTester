@@ -37,13 +37,13 @@ config.stocks_csv_file_path = 'D:/Winston\'s Data/Downloads/stocks_csv'
 
 config.equity = 'stocks'  # currently supporting stocks
 config.nation = 'international'  # usa or international
-config.stock_number = 20
+config.stock_number = 500  # number of stocks
 config.candle_length = '1h'
 config.datetime_str = 'datetime'
-config.start_date = '2024-6-1'
-config.end_date = '2025-5-15'
-config.long = True  # must be True if config.short = False
-config.short = True  # must be True if config.long = False
+config.start_date = '2024-10-01'
+config.end_date = '2025-04-01'
+config.long = True  # allows long trades; must be True if config.short = False
+config.short = False  # allows short trades; must be True if config.long = False
 
 config.rsi_length = 12
 config.ema_length = 12
@@ -59,7 +59,7 @@ config.high_low_range_a2 = 1
 config.high_low_range_3 = 8
 config.high_low_range_4 = 3
 
-config.divergence_expiration = 30
+config.divergence_expiration = 30  # candles that can pass between the 1st and 2nd extrema of divergence before signal expires
 
 config.rsi_quality_multiplier = 0.1  # 10
 config.ema_quality_exponential_multiplier = 0.8  # infinite
@@ -87,15 +87,17 @@ config.stochastic_cross_level = 10  # only is applied if definitive_stochastic =
 config.stochastic_cross_expiration = 10  # only is applied if definitive_stochastic == True
 
 config.buy_signal_order_dict = {'divergences': 0,
-                                'candle sticks': 1}
+                                'breakouts': 1,
+                                'candle sticks': 2}
+config.buy_signal_order_dict = {'divergences': 0}
 
 # order_dependant_buy_expirations = False
 
-config.buy_signal_expiration_dict = {'divergences': 6,  # if order_dependant_buy_expirations is True
-                                     'breakouts': math.nan,
-                                     'candle sticks': math.nan}
+# config.buy_signal_expiration_dict = {'divergences': 8,  # if order_dependant_buy_expirations is True
+#                                      'breakouts': 4,
+#                                      'candle sticks': math.nan}
 
-config.buy_signal_expiration_list = [10, 5]  # len(buy_signal_expiration_list) = len(buy_signal_order_dict) - 1
+config.buy_signal_expiration_list = [8]  # len(buy_signal_expiration_list) = len(buy_signal_order_dict) - 1
 
 # config.pre_earnings_date_omission = 1  # set to -1 to be inactive, omits buy signal if buy signal is before earnings date
 # config.post_earnings_date_omission = 2  # set to -1 to be inactive, omits buy signal if buy signal is after earnings date
@@ -103,6 +105,10 @@ config.buy_signal_expiration_list = [10, 5]  # len(buy_signal_expiration_list) =
 config.quality_minimum = 0
 
 config.sell_signals_nested_list = [['sell signal indicator 1', 'artificial margin 1'],  # sell signal indicator, support resistance, artificial margin, sell time
+                                   ['support resistance 1'],
+                                   ['sell time 1']]
+config.sell_signals_nested_list = [['sell signal indicator 1'],
+                                   ['artificial margin 1'],
                                    ['support resistance 1'],
                                    ['sell time 1']]
 
@@ -119,7 +125,7 @@ config.support_resistance_resistance_high_1 = True  # True, False
 config.support_resistance_simultaneous_fulfillment_1 = True  # requires the signal to be fulfilled at the time of the sell signal; cannot be complete then incomplete
 
 # artificial margin 1
-config.artificial_margin_take_profit_1 = 1.03  # 1-infinity
+config.artificial_margin_take_profit_1 = 1.01  # 1-infinity
 config.artificial_margin_stop_loss_1 = 0.99  # 0-1
 config.artificial_margin_take_profit_high_1 = True  # True, False
 config.artificial_margin_simultaneous_fulfillment_1 = True  # requires the signal to be fulfilled at the time of the sell signal; cannot be complete then incomplete
@@ -127,22 +133,26 @@ config.artificial_margin_simultaneous_fulfillment_1 = True  # requires the signa
 # sell time 1
 config.sell_time_value_1 = 60
 
-config.a = 5  # a >= 1
-config.order_size_based_on_money = False
-config.b = 1.3  # b >= 1
-config.order_size_based_on_quality = False
+config.a = 8  # a >= 1; number of positions that portfolio can hold; trade size = 1 / a
+
+config.order_size_based_on_money = True  # if true, orders will be smaller when portfolio has proportionally less money
+config.b = 1.4  # b >= 1
+# trade size = (money / a) ** b
+
+config.order_size_based_on_quality = False  # if true, orders will be larger when buy signal quality is higher
 config.lowest_order_quality = 10
 config.highest_order_quality = 30
 config.c = 20  # c > 0
 config.d = 0.1  # 1 > d > 0
+# trade size = trade size * ((1 - (quality difference / (order quality - lowest_order_quality + quality difference + c))) ** d)
 
-config.calculate_sharpe_ratio = False
-config.risk_free_rate = 0.0425
+config.calculate_sharpe_ratio = True  # currently only works when short = False
+config.risk_free_rate = 0.045
 
-config.calc_profit_odds = False
+config.calc_profit_odds = True  # if calc_profit_odds = True, calculate_sharpe_ratio must be True
 config.sims = 10000
-config.hours = 8*21
-config.profit_minimum = 1
+config.hours = 8*21  # trading hours in one month
+config.profit_minimum = 1  # break even
 
 # --------------------functions--------------------
 
@@ -156,8 +166,8 @@ indicators.indicators()  # creates indicators
 signals.signals()  # creates signals
 trade_signals.trade_signals()  # creates trades
 backtest.backtest()  # backtests
-# graph.graph_profits()  # graphs profits
 
+# graph.graph_profits()  # graphs profits
 # graph.graph_stock('AAPL')  # graphs stock price and rsi; pass in ticker symbol of desired stock
 
 time2 = time.time()

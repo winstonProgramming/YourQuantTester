@@ -9,7 +9,7 @@ import config
 import file_management
 import get_time_delta
 
-def back_test_func():
+def backtest():
     benchmark_list = []
 
     def individual_stock_order_list():
@@ -374,7 +374,7 @@ def back_test_func():
             return money0, portfolio0
 
         def long_sell_func(money0, portfolio0, ticker0, price0, date0):
-            trade_duration_list.append(config.get_time_delta.get_time_delta(date0, portfolio0.get(ticker0)[2]))
+            trade_duration_list.append(get_time_delta.get_time_delta_tickers(date0, portfolio0.get(ticker0)[2]))
             money0 += price0*(portfolio0.get(ticker0)[0])
             trade_size0 = (portfolio0.get(ticker0)[3])
             trade_profit0 = (price0/(portfolio0.get(ticker0)[1]))-1
@@ -409,7 +409,7 @@ def back_test_func():
             return money0, portfolio0
 
         def short_sell_func(money0, portfolio0, ticker0, price0, date0):
-            trade_duration_list.append(get_time_delta.get_time_delta(date0, portfolio0.get(ticker0)[2]))
+            trade_duration_list.append(get_time_delta.get_time_delta_tickers(date0, portfolio0.get(ticker0)[2]))
             money0 += (portfolio0.get(ticker0)[1]-price0)*(portfolio0.get(ticker0)[0]) + portfolio0.get(ticker0)[1]*portfolio0.get(ticker0)[0]
             trade_size0 = (portfolio0.get(ticker0)[3])
             trade_profit0 = 1-(price0/portfolio0.get(ticker0)[1])
@@ -589,7 +589,9 @@ def back_test_func():
                 today = config.dates_list_compiled[x + 1][0:10]
                 if tickers_held is not None:
                     for y, ticker in enumerate(tickers_held):
-                        df_raw = pd.read_csv(config.stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(config.candle_length, ticker), index_col=False, header=0)
+                        df_raw = pd.read_csv(
+                            config.stocks_csv_file_path + f'/{config.candle_length}/raw data/{ticker}_raw data.csv',
+                            index_col=False, header=0)
                         date_list = df_raw[config.datetime_str].tolist()
                         close_list = df_raw['close'].tolist()
                         date_close_dict = {date_list[z]: close_list[z] for z in range(len(date_list))}
@@ -615,7 +617,7 @@ def back_test_func():
             weeks_won = 0
             weeks_uninvested = 0
             weeks_lost = 0
-            for counter in range(len(portfolio_value_weekly_list[:-1])):
+            for counter in range(len(portfolio_value_weekly_list) - 1):
                 if portfolio_value_weekly_list[counter+1] > portfolio_value_weekly_list[counter]:
                     weeks_won += 1
                 elif portfolio_value_weekly_list[counter + 1] < portfolio_value_weekly_list[counter]:
@@ -756,13 +758,15 @@ def back_test_func():
         # order_list_df = order_list_df.assign(money=money_list)
         order_list_df.to_csv('order list.csv', mode='w', index=False)
 
-        df_raw = pd.read_csv(config.stocks_csv_file_path + '/{}/raw data/{}_raw data.csv'.format(config.candle_length, config.tickers[0]), index_col=False, header=0)
+        df_raw = pd.read_csv(
+            config.stocks_csv_file_path + f'/{config.candle_length}/raw data/{config.tickers[0]}_raw data.csv',
+            index_col=False, header=0)
         raw_dates = df_raw[config.datetime_str].tolist()
         avg_port_list = []
         for count in range(len(order_date)-1):
-            day_length = get_time_delta.get_time_delta(order_date[count + 1], order_date[count])
+            day_length = get_time_delta.get_time_delta_tickers(order_date[count + 1], order_date[count])
             avg_port_list.append(day_length * (1-(money_list[count]/estimated_value_list[count])))
-        avg_port = sum(avg_port_list) / get_time_delta.get_time_delta(raw_dates[-1], raw_dates[0])
+        avg_port = sum(avg_port_list) / get_time_delta.get_time_delta_tickers(raw_dates[-1], raw_dates[0])
 
         sorted_portfolio_size_list = portfolio_size_list
         sorted_portfolio_size_list.sort(reverse=True)
@@ -813,7 +817,7 @@ def back_test_func():
             short_average_profit_per_trade_ats = statistics.geometric_mean(short_geometric_trade_profit_list_ats)
             short_average_profit_per_trade_ats = short_average_profit_per_trade_ats - 1
 
-        def print_data_func():
+        def print_data():
             try:
                 print('----------------------------------------')
                 print('start date: ' + config.start_date)
@@ -852,7 +856,7 @@ def back_test_func():
                 print('hourly return differential')
                 print('sharpe ratio: ' + str(sharpe_ratio))
                 print('volatility: ' + str(annual_volatility*100) + '%')
-                print('volatility divided by average percentage of portfolio in the market: ' + str(annual_volatility/avg_port))
+                print('volatility multiplied by average percentage of portfolio in the market: ' + str(annual_volatility*avg_port*100) + '%')
                 print('----------------------------------------')
                 print('weeks won: ' + str(weeks_won))
                 print('weeks uninvested: ' + str(weeks_uninvested))
@@ -863,10 +867,10 @@ def back_test_func():
             # print('benchmark: ' + str((statistics.mean(benchmark_list)-1)*100) + '%')
             # print('benchmark hours in market: ' + len(dates_list_compiled))
 
-        print_data_func()
+        print_data()
 
     individual_stock_order_list()
     order_list_compiler()
     trade()
 
-    print('back_test complete')
+    print('backtest complete')

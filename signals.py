@@ -314,7 +314,7 @@ def breakouts():
             unverified_breakout_data = []  # format: [date, breakout price, type]
 
             for count in range(len(highs_lows_dict) - 5):  # inverted head and shoulders
-                if get_time_delta.get_time_delta(highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count)][0]) < config.breakout_pattern_formation_expiration * 5:
+                if get_time_delta.get_time_delta_ticker(highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count)][0], dates) < config.breakout_pattern_formation_expiration * 5:
                     if not math.isnan(highs_lows_dict[str(count)][3]):  # checking that 0 == high
                         if not math.isnan(highs_lows_dict[str(count + 1)][4]):  # checking that 1 == low
                             if highs_lows_dict[str(count)][3] > highs_lows_dict[str(count + 1)][4]:  # checking 0 > 1
@@ -332,7 +332,7 @@ def breakouts():
                                                                     unverified_breakout_data.append([highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count + 4)][3], 'inverted head and shoulders'])
 
             for count in range(len(highs_lows_dict) - 3):  # double bottom
-                if get_time_delta.get_time_delta(highs_lows_dict[str(count + 3)][0], highs_lows_dict[str(count)][0]) < config.breakout_pattern_formation_expiration * 3:
+                if get_time_delta.get_time_delta_ticker(highs_lows_dict[str(count + 3)][0], highs_lows_dict[str(count)][0], dates) < config.breakout_pattern_formation_expiration * 3:
                     if not math.isnan(highs_lows_dict[str(count)][3]):  # checking that 0 == high
                         if not math.isnan(highs_lows_dict[str(count + 1)][4]):  # checking that 1 == low
                             if highs_lows_dict[str(count)][3] > highs_lows_dict[str(count + 1)][4]:  # checking 0 > 1
@@ -345,7 +345,7 @@ def breakouts():
                                                         unverified_breakout_data.append([highs_lows_dict[str(count + 3)][0], highs_lows_dict[str(count + 2)][3], 'double bottom'])
 
             for count in range(len(highs_lows_dict) - 5):  # triple bottom
-                if get_time_delta.get_time_delta(highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count)][0]) < config.breakout_pattern_formation_expiration * 5:
+                if get_time_delta.get_time_delta_ticker(highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count)][0], dates) < config.breakout_pattern_formation_expiration * 5:
                     if not math.isnan(highs_lows_dict[str(count)][3]):  # checking that 0 == high
                         if not math.isnan(highs_lows_dict[str(count + 1)][4]):  # checking that 1 == low
                             if highs_lows_dict[str(count)][3] > highs_lows_dict[str(count + 1)][4]:  # checking 0 > 1
@@ -366,7 +366,7 @@ def breakouts():
                                                                                 unverified_breakout_data.append([highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count + 4)][3], 'triple bottom'])
 
             for count in range(len(highs_lows_dict) - 4):  # bullish rectangle
-                if get_time_delta.get_time_delta(highs_lows_dict[str(count + 4)][0], highs_lows_dict[str(count)][0]) < config.breakout_pattern_formation_expiration * 4:
+                if get_time_delta.get_time_delta_ticker(highs_lows_dict[str(count + 4)][0], highs_lows_dict[str(count)][0], dates) < config.breakout_pattern_formation_expiration * 4:
                     if not math.isnan(highs_lows_dict[str(count)][4]):  # checking that 0 == low
                         if not math.isnan(highs_lows_dict[str(count + 1)][3]):  # checking that 1 == high
                             if not math.isnan(highs_lows_dict[str(count + 2)][4]):  # checking that 2 == low
@@ -417,7 +417,6 @@ def breakouts():
                         bullish_breakout_list.append(None)
                     else:
                         bullish_breakout_list.append('long')
-                        print(ticker, 'breakout')
 
                 df = df.assign(bullish_breakout=bullish_breakout_list)
             else:
@@ -435,7 +434,7 @@ def breakouts():
             unverified_breakout_data = []  # format: [date, breakout price, type]
 
             for count in range(len(highs_lows_dict) - 5):  # head and shoulders
-                if get_time_delta.get_time_delta(highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count)][0]) < config.breakout_pattern_formation_expiration * 5:
+                if get_time_delta.get_time_delta_ticker(highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count)][0], dates) < config.breakout_pattern_formation_expiration * 5:
                     if not math.isnan(highs_lows_dict[str(count)][3]):  # checking that 0 == high
                         if not math.isnan(highs_lows_dict[str(count + 1)][4]):  # checking that 1 == low
                             if highs_lows_dict[str(count)][3] > highs_lows_dict[str(count + 1)][4]:  # checking 0 > 1
@@ -453,7 +452,7 @@ def breakouts():
                                                                     unverified_breakout_data.append([highs_lows_dict[str(count + 5)][0], -highs_lows_dict[str(count + 4)][3], 'head and shoulders'])
 
             for count in range(len(highs_lows_dict) - 3):  # double top
-                if get_time_delta.get_time_delta(highs_lows_dict[str(count + 3)][0], highs_lows_dict[str(count)][0]) < config.breakout_pattern_formation_expiration * 3:
+                if get_time_delta.get_time_delta_ticker(highs_lows_dict[str(count + 3)][0], highs_lows_dict[str(count)][0], dates) < config.breakout_pattern_formation_expiration * 3:
                     if not math.isnan(highs_lows_dict[str(count)][3]):  # checking that 0 == high
                         if not math.isnan(highs_lows_dict[str(count + 1)][4]):  # checking that 1 == low
                             if highs_lows_dict[str(count)][3] > highs_lows_dict[str(count + 1)][4]:  # checking 0 > 1
@@ -466,7 +465,7 @@ def breakouts():
                                                         unverified_breakout_data.append([highs_lows_dict[str(count + 3)][0], -highs_lows_dict[str(count + 2)][3], 'double top'])
 
             for count in range(len(highs_lows_dict) - 5):  # triple top
-                if get_time_delta.get_time_delta(highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count)][0]) < config.breakout_pattern_formation_expiration * 5:
+                if get_time_delta.get_time_delta_ticker(highs_lows_dict[str(count + 5)][0], highs_lows_dict[str(count)][0], dates) < config.breakout_pattern_formation_expiration * 5:
                     if not math.isnan(highs_lows_dict[str(count)][3]):  # checking that 0 == high
                         if not math.isnan(highs_lows_dict[str(count + 1)][4]):  # checking that 1 == low
                             if highs_lows_dict[str(count)][3] > highs_lows_dict[str(count + 1)][4]:  # checking 0 > 1
@@ -487,7 +486,7 @@ def breakouts():
                                                                                 unverified_breakout_data.append([highs_lows_dict[str(count + 5)][0], -highs_lows_dict[str(count + 4)][3], 'triple top'])
 
             for count in range(len(highs_lows_dict) - 4):  # bearish rectangle
-                if get_time_delta.get_time_delta(highs_lows_dict[str(count + 4)][0], highs_lows_dict[str(count)][0]) < config.breakout_pattern_formation_expiration * 4:
+                if get_time_delta.get_time_delta_ticker(highs_lows_dict[str(count + 4)][0], highs_lows_dict[str(count)][0], dates) < config.breakout_pattern_formation_expiration * 4:
                     if not math.isnan(highs_lows_dict[str(count)][4]):  # checking that 0 == low
                         if not math.isnan(highs_lows_dict[str(count + 1)][3]):  # checking that 1 == high
                             if not math.isnan(highs_lows_dict[str(count + 2)][4]):  # checking that 2 == low
@@ -638,8 +637,8 @@ def divergences():
             divergence_quality = []
             divergence_quality_list = []
             for x in range(len(matching_low_dates_2) - 1):
-                time_difference = get_time_delta.get_time_delta(matching_low_dates_2[x + 1], matching_low_dates_2[x])
-                volatility = volatility_list[get_time_delta.get_time_delta(matching_low_dates_2[x + 1], config.dates_list_compiled[0])]
+                time_difference = get_time_delta.get_time_delta_ticker(matching_low_dates_2[x + 1], matching_low_dates_2[x], dates)
+                volatility = volatility_list[dates.index(matching_low_dates_2[x + 1])]
                 if (matching_low_prices_2[x] > matching_low_prices_2[x + 1]
                         and matching_low_rsis_2[x] < matching_low_rsis_2[x + 1]
                         and time_difference < config.divergence_expiration
@@ -667,7 +666,6 @@ def divergences():
                     divergences_list.append('long')
                     divergence_quality_list.append(divergence_quality[counter])
                     counter += 1
-                    print(ticker, 'divergence')
                 else:
                     divergences_list.append(None)
                     divergence_quality_list.append(None)
@@ -748,8 +746,8 @@ def divergences():
             divergence_quality = []
             divergence_quality_list = []
             for x in range(len(matching_high_dates_2) - 1):
-                time_difference = get_time_delta.get_time_delta(matching_high_dates_2[x + 1], matching_high_dates_2[x])
-                volatility = volatility_list[get_time_delta.get_time_delta(matching_high_dates_2[x + 1], config.dates_list_compiled[0])]
+                time_difference = get_time_delta.get_time_delta_ticker(matching_high_dates_2[x + 1], matching_high_dates_2[x], dates)
+                volatility = volatility_list[dates.index(matching_high_dates_2[x + 1])]
                 if (matching_high_prices_2[x] < matching_high_prices_2[x + 1]
                         and matching_high_rsis_2[x] > matching_high_rsis_2[x + 1]
                         and time_difference < config.divergence_expiration

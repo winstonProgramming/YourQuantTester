@@ -38,11 +38,23 @@ def get_tickers():
             tickers_list = tickers_list[:config.stock_number]
             tickers_list = list(set(tickers_list))
 
-            try:
-                tickers_list.remove('BRK')
-                tickers_list.append('BRK-B')
-            except ValueError:
-                pass
+            def replace_ticker(t1, t2):
+                try:
+                    tickers_list.remove(t1)
+                    tickers_list.append(t2)
+                except ValueError:
+                    pass
+
+            def remove_ticker(t):
+                try:
+                    tickers_list.remove(t)
+                    print('removed')
+                except ValueError:
+                    pass
+
+            replace_ticker('BRK', 'BRK-B')
+            replace_ticker('FWON', 'FWONK')
+            remove_ticker('CRWV')
 
             tickers_df0 = pd.DataFrame(tickers_list, columns=['tickers'])
             tickers_df0.to_csv('tickers.csv', mode='w')
