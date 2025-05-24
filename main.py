@@ -33,12 +33,12 @@ time1 = time.time()
 
 # --------------------settings--------------------
 
-config.stocks_csv_file_path = 'D:/Winston\'s Data/Downloads/stocks_csv'
+config.stocks_csv_file_path = 'D:/Winston\'s Data/Downloads/stocks_csv'  # configure to your own path
 
 config.equity = 'stocks'  # currently supporting stocks
 config.nation = 'international'  # usa or international
 config.stock_number = 500  # number of stocks
-config.candle_length = '1h'
+config.candle_length = '1h'  # currently only supporting 1h
 config.datetime_str = 'datetime'
 config.start_date = '2024-10-01'
 config.end_date = '2025-04-01'
