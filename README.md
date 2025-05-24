@@ -1,4 +1,4 @@
-<h1 align="center">Moo Moo.io 2</h1>
+<h1 align="center">YourQuantTester</h1>
 
 <p>
 
