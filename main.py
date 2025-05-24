@@ -47,17 +47,17 @@ config.short = False  # allows short trades; must be True if config.long = False
 
 config.rsi_length = 12
 config.ema_length = 12
-config.fastk_period = 5
-config.slowk_period = 3
-config.slowd_period = 3
+config.fastk_period = 5  # fast k for stochastic
+config.slowk_period = 3  # slow k for stochastic
+config.slowd_period = 3  # slow d for stochastic
 config.rolling_volatility_length = 30
 
-config.high_low_range_b1 = 5
-config.high_low_range_a1 = 5
-config.high_low_range_b2 = 5
-config.high_low_range_a2 = 1
-config.high_low_range_3 = 8
-config.high_low_range_4 = 3
+config.high_low_range_b1 = 5  # number of candles that must be higher/lower before extrema (for first extrema of divergence)
+config.high_low_range_a1 = 5  # number of candles that must be higher/lower after extrema (for first extrema of divergence)
+config.high_low_range_b2 = 5  # number of candles that must be higher/lower after extrema (for second extrema of divergence)
+config.high_low_range_a2 = 1  # number of candles that must be higher/lower after extrema (for second extrema of divergence)
+config.high_low_range_3 = 8  # number of candles that must be higher/lower before and after extrema (for supports and resistances)
+config.high_low_range_4 = 3  # number of candles that must be higher/lower before and after extrema (for breakouts)
 
 config.divergence_expiration = 30  # candles that can pass between the 1st and 2nd extrema of divergence before signal expires
 
@@ -72,30 +72,36 @@ config.stochastic_quality_multiplier = 0.1  # 10
 # config.stochastic_quality_multiplier = 0
 
 config.breakout_pattern_formation_expiration = 5
-config.head_and_shoulders_multiplier = 1.2  # higher value = more restrictive
-config.zone_multiplier = 0.25  # higher value = less restrictive
+config.head_and_shoulders_multiplier = 1.2  # high of head must be "head and shoulders multiplier" times greater than high of shoulders;higher value = more restrictive
+config.zone_multiplier = 0.25  # extrema must be within the range of "zone multiplier" to be considered equal; higher value = less restrictive
 config.breakout_pattern_breakout_expiration = 10
 
 config.price_difference_quality_multiplier = 3  # infinite
 config.rsi_difference_quality_multiplier = 1.2  # infinite
 config.rsi_level_quality_multiplier = 0.02  # 4
 
-config.stochastic_crossover = True
-config.stochastic_maximum = 50  # only is applied if definitive_stochastic == True
-config.flexible_stochastic_cross_level = True  # only is applied if definitive_stochastic == True
-config.stochastic_cross_level = 10  # only is applied if definitive_stochastic == True
-config.stochastic_cross_expiration = 10  # only is applied if definitive_stochastic == True
+
+config.stochastic_crossover = True  # if True, will use stochastic for divergence
+config.stochastic_maximum = 50  # maximum stochastic value at which a divergence can occur; only applied if stochastic_crossover == True
+config.flexible_stochastic_cross_level = True  # only applied if stochastic_crossover == True
+config.stochastic_cross_level = 10  # if not using flexible stochastic, stochastic must cross above this value to trigger crossover
+    # if using flexible stochastic, stochastic must cross above this much above its initial value to trigger crossover
+    # only applied if stochastic_crossover == True
+config.stochastic_cross_expiration = 10  # number of candles that can pass before crossover is invalid
+    # only applied if stochastic_crossover == True
+
 
 config.buy_signal_order_dict = {'divergences': 0,
                                 'breakouts': 1,
-                                'candle sticks': 2}
+                                'candle sticks': 2} # indicators are ordered chronologically
+    # if two indicators have the same value, they can happen in either order but both must happen
 config.buy_signal_order_dict = {'divergences': 0}
 
 # order_dependant_buy_expirations = False
 
-# config.buy_signal_expiration_dict = {'divergences': 8,  # if order_dependant_buy_expirations is True
+# config.buy_signal_expiration_dict = {'divergences': 8,
 #                                      'breakouts': 4,
-#                                      'candle sticks': math.nan}
+#                                      'candle sticks': math.nan}  # if order_dependant_buy_expirations is True
 
 config.buy_signal_expiration_list = [8]  # len(buy_signal_expiration_list) = len(buy_signal_order_dict) - 1
 
@@ -104,9 +110,11 @@ config.buy_signal_expiration_list = [8]  # len(buy_signal_expiration_list) = len
 
 config.quality_minimum = 0
 
-config.sell_signals_nested_list = [['sell signal indicator 1', 'artificial margin 1'],  # sell signal indicator, support resistance, artificial margin, sell time
+
+config.sell_signals_nested_list = [['sell signal indicator 1', 'artificial margin 1'],
                                    ['support resistance 1'],
-                                   ['sell time 1']]
+                                   ['sell time 1']]  # all values of one list of the sell signals nested list must be fulfilled to trigger sell
+    # sell signal indicator, support resistance, artificial margin, sell time
 config.sell_signals_nested_list = [['sell signal indicator 1'],
                                    ['artificial margin 1'],
                                    ['support resistance 1'],
@@ -135,11 +143,11 @@ config.sell_time_value_1 = 60
 
 config.a = 8  # a >= 1; number of positions that portfolio can hold; trade size = 1 / a
 
-config.order_size_based_on_money = True  # if true, orders will be smaller when portfolio has proportionally less money
+config.order_size_based_on_money = True  # if True, orders will be smaller when portfolio has proportionally less money
 config.b = 1.4  # b >= 1
 # trade size = (money / a) ** b
 
-config.order_size_based_on_quality = False  # if true, orders will be larger when buy signal quality is higher
+config.order_size_based_on_quality = False  # if True, orders will be larger when buy signal quality is higher
 config.lowest_order_quality = 10
 config.highest_order_quality = 30
 config.c = 20  # c > 0
