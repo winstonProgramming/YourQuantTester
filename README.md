@@ -1,5 +1,6 @@
 <h1 align="center">YourQuantTester</h1>
-YourQuantTester is a comprehensive backtesting system that evaluates quantitative trading strategies. It is capable of datascraping OHLCV data, generating indicators and signals, and backtesting strategies, providing detailed performance metrics.
+
+YourQuantTester is a comprehensive backtesting system that evaluates quantitative trading strategies. It is capable of datascraping OHLCV data, generating indicators and signals, and backtesting strategies, providing detailed performance metrics. For an in depth explanation of YourQuantTester, watch my YouTube video on it: https://youtu.be/mg2qNVv_FS8?si=Td6XSo1LUoIVoerH.
 
 ## 📈 Features
 - Backtests long and/or short strategies
@@ -116,10 +117,8 @@ Downloads/
 │   │   ├── sell signals/
 └── └── └── order list/
 ```
-<br>
-For an in depth explanation of YourQuantTester, watch my YouTube video on it: https://youtu.be/mg2qNVv_FS8?si=Td6XSo1LUoIVoerH.
-<br>
-<br>
+
+## 📷 Images
 Image of order list.csv:
 <div><img src="Stock Market Day Trading Simulator Images/img 1.png" width=650px></div>
 <br>
@@ -128,3 +127,8 @@ Image of backtest results:
 <br>
 Image of expected distribution of profits:
 <div><img src="Stock Market Day Trading Simulator Images/img 3.png" width=650px></div>
+
+## ❗ Disclaimers
+- YourQuantTester is for informational purposes only. Nothing in this repository should be interpreted as a recommendation to buy, sell, or hold any financial asset.
+- Past performance is not indicative of future results. Although some quantitative trading strategies may seem extremely profitable in testing, they may perform differently across different timeframes and different markets.
+- YourQuantTester is a work in progress with many bugs and oversights. It also relies on publicly available financial data, which may contain errors or omissions. Data accuracy is not guaranteed so use YourQuantTrader at your own risk.
