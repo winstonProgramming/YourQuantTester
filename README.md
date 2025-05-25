@@ -1,11 +1,11 @@
 <h1 align="center">YourQuantTester</h1>
 
-YourQuantTester is a comprehensive backtesting system that evaluates quantitative trading strategies. It is capable of datascraping OHLCV data, generating indicators and signals, and backtesting strategies, providing detailed performance metrics. For an in depth explanation of YourQuantTester, watch my YouTube video on it: https://youtu.be/mg2qNVv_FS8?si=Td6XSo1LUoIVoerH.
+YourQuantTester is a comprehensive backtesting program that evaluates quantitative trading strategies. It is capable of datascraping OHLCV data, generating indicators and signals, and backtesting strategies, providing detailed performance metrics. For an in depth explanation of YourQuantTester, watch my YouTube video on it: https://youtu.be/mg2qNVv_FS8?si=Td6XSo1LUoIVoerH.
 
 ## 📈 Features
 - Backtests long and/or short strategies
 - Customizable technical indicators (RSI, EMA, Stochastic, etc.)
-- Supports multiple signal types: divergences, breakouts, candlestick patterns
+- Customizable buy signals (divergences, breakouts, candlestick patterns)
 - Multi-layered sell criteria (indicators, support/resistance, margin, time-based)
 - Portfolio management and dynamic position sizing
 - Sharpe ratio and probability-of-profit simulation (only supported for long strategies)
@@ -60,7 +60,7 @@ Settings are controlled via the `main.py` module, including:
 - Most positions at once
 - Sharpe ratio
 - Volatility
-- Volatility multiplied by average percentage of portfolio in the market
+- Volatility divided by average percentage of portfolio in the market
 
 ## 📁 File Organization
 ```plaintext
@@ -130,5 +130,5 @@ Image of expected distribution of profits:
 
 ## ❗ Disclaimers
 - YourQuantTester is for informational purposes only. Nothing in this repository should be interpreted as a recommendation to buy, sell, or hold any financial asset.
-- Past performance is not indicative of future results. Although some quantitative trading strategies may seem extremely profitable in testing, they may perform differently across different timeframes and different markets.
+- Past performance is not indicative of future results. Although some quantitative trading strategies may demonstrate to be extremely profitable in testing, they may perform differently across other timeframes and other markets.
 - YourQuantTester is a work in progress with many bugs and oversights. It also relies on publicly available financial data, which may contain errors or omissions. Data accuracy is not guaranteed so use YourQuantTrader at your own risk.
