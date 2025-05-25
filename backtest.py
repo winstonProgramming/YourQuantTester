@@ -856,7 +856,7 @@ def backtest():
                 print('hourly return differential')
                 print('sharpe ratio: ' + str(sharpe_ratio))
                 print('volatility: ' + str(annual_volatility*100) + '%')
-                print('volatility multiplied by average percentage of portfolio in the market: ' + str(annual_volatility*avg_port*100) + '%')
+                print('volatility divided by average percentage of portfolio in the market: ' + str(annual_volatility*100/avg_port) + '%')
                 print('----------------------------------------')
                 print('weeks won: ' + str(weeks_won))
                 print('weeks uninvested: ' + str(weeks_uninvested))

@@ -4,6 +4,7 @@ import math
 import statistics
 import urllib.request
 import urllib.parse
+from itertools import permutations, product
 
 import talib
 import pandas as pd
@@ -11,7 +12,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from itertools import permutations, product
 # import multiprocessing
 # from tvDatafeed import TvDatafeed, Interval
 # import pylab
@@ -25,8 +25,8 @@ import file_management
 import get_tickers
 import indicators
 import signals
-import backtest
 import trade_signals
+import backtest
 import graph
 
 time1 = time.time()

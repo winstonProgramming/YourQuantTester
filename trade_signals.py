@@ -1,6 +1,6 @@
 import math
-
 from itertools import permutations, product
+
 import pandas as pd
 
 import config
